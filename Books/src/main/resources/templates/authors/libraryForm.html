@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <title>Create Library</title>
+</head>
+<body>
+<div class="container mt-5">
+  <h1 class="mb-4">Create Library</h1>
+  <form th:action="@{/libraries}" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Library Name</label>
+      <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="wirelessAccess" class="form-label">Wireless Access</label>
+      <input type="checkbox" id="wirelessAccess" name="wirelessAccess">
+    </div>
+    <div class="mb-3">
+      <label for="books" class="form-label">Books</label>
+      <select id="books" name="bookIds" class="form-select" multiple>
+        <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.title}">Book Title</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+  <a href="/libraries" class="btn btn-secondary mt-3">Back to List</a>
+</div>
+</body>
+</html>
